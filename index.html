@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="/styles/page-landing.css">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;700&amp;family=Poppins:wght@400;600&amp;display=swap"
+        rel="stylesheet">
+</head>
+
+<body>
+    <div id="container">
+        <div id="options">
+            <div class="option-button">Jogo da velha</div>
+            <div class="option-button">
+                <form>
+                    <INPUT TYPE="RADIO" NAME="option" VALUE="1"> PvP <br>
+                    <INPUT TYPE="RADIO" NAME="option" VALUE="2"> PvM <br>
+                    <INPUT TYPE="RADIO" NAME="option" VALUE="3" checked> MvM <br>
+                </form>
+            </div>
+            <button type="button" class="option-button" id="play">Play</button>
+            <div class="option-button">Round</div>
+        </div>
+        <div id="game">
+            <div id="interaction">
+                <div class="area" id="0">1</div>
+                <div class="area" id="1">2</div>
+                <div class="area" id="3">3</div>
+                <div class="area" id="3">4</div>
+                <div class="area" id="4">5</div>
+                <div class="area" id="5">6</div>
+                <div class="area" id="6">7</div>
+                <div class="area" id="7">8</div>
+                <div class="area" id="8">9</div>
+            </div>
+        </div>
+    </div>
+    <script>"./dist/index.js"</script>
+</body>
+
+</html>
