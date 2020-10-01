@@ -5,5 +5,9 @@
   "license": "MIT",
   "devDependencies": {
     "typescript": "^4.0.3"
+  },
+  "dependencies": {
+    "@babel/plugin-transform-modules-commonjs": "^7.10.4",
+    "commonjs": "^0.0.1"
   }
 }

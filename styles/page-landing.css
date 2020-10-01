@@ -2,9 +2,11 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-
+    border: 0;
     --primary-color: #7691D9;
+    --default-background-color: #00d9ff;
 }
+
 body {
     background-color: rgb(0, 162, 255);
     font-family: 'Archivo', 'Helvetica Neue', 'Helvetica', Arial, sans-serif;
@@ -15,98 +17,122 @@ body {
     justify-content: center;
     padding-top: 10%;
 }
-body #container{
+
+body #container {
     width: 1024px;
     height: 720px;
     background-color: white;
     border-radius: 30px;
-
     display: flex;
     align-items: center;
     justify-content: left;
 }
 
-body #container #options{
+body #container #options {
     width: 341px;
     height: 720px;
 }
-body #container #options .option-button{
+
+body #container #options .option-button {
     width: 341px;
     height: 180px;
-
-    font-family:Poppins;
+    font-family: Poppins;
     color: white;
-    background-color:var(--primary-color);
+    background-color: var(--primary-color);
     transition: 0.2s;
-
     display: flex;
     align-items: center;
     justify-content: center;
 }
-body #container #options .option-button:hover{
+
+body #container #options .option-button:hover {
     opacity: 0.9;
 }
 
-body #container #options .option-button:first-child{
+body #container #options .option-button:first-child {
     font-size: 45px;
     border-radius: 30px 0px 0px 0px;
     transition: 0.5s;
 }
-body #container #options .option-button:first-child:hover{
+
+body #container #options .option-button:first-child:hover {
     font-size: 45px;
     border-radius: 30px 0px 0px 0px;
     opacity: 100%;
-    color:transparent;
+    color: transparent;
     background-image: url("../src/images/jogo-da-velha.jpg");
     background-position: center;
     background-size: cover;
     transition: 0.5s;
 }
-body #container #options .option-button:nth-child(2){
 
+body #container #options .option-button:nth-child(2) {
     font-size: 35px;
-
     display: flex;
     align-items: center;
     justify-content: center;
     flex-direction: column;
 }
-body #container #options .option-button:nth-child(3){
+
+body #container #options .option-button:nth-child(3) {
     font-size: 35px;
     background-color: var(--primary-color);
 }
-body #container #options .option-button:nth-child(4){
+
+body #container #options .option-button:nth-child(4) {
     background-color: var(--primary-color);
     border-radius: 0px 0px 0px 30px;
 }
-body #container #game{
-    display:  flex;
+
+body #container #game {
+    display: flex;
     align-items: center;
     justify-content: center;
     flex-direction: column;
 }
-body #container #game #interaction{
+
+body #container #game #interaction {
     display: flex;
     justify-content: center;
     flex-direction: row;
     flex-wrap: wrap;
 }
 
-body #container #game #interaction .area{
+body #container #game #interaction .area {
     width: 160px;
     height: 160px;
     border-radius: 20px;
     background-color: var(--primary-color);
     margin: 10px;
     box-shadow: 7px 10px 5px rgb(179, 179, 179);
-
     align-items: center;
     justify-content: center;
     flex-direction: column;
+    background-position: center;
+    background-size: cover;
 }
-body #container #game #interaction .area:hover{
+
+body #container #game #interaction .area:hover {
+    background-color: rgb(255, 255, 255);
+    opacity: 80%;
     transition: 0.5s;
-    opacity: 0.75;
-    background-color: black;
-   
+    background-image: url("../src/images/circle.png");
+    background-position: center;
+    background-size: cover;
+
+}
+
+.radios {
+    width: 341px;
+    height: 180px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-around;
+    background-color: var(--primary-color);
+  }
+
+
+.radios .gamemode:nth-child(1) {
+    background-image: url("/src/images/jogo-da-velha.jpg");
 }

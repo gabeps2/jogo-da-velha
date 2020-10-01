@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
 
 <head>
     <meta charset="UTF-8">
@@ -15,31 +15,43 @@
     <div id="container">
         <div id="options">
             <div class="option-button">Jogo da velha</div>
-            <div class="option-button">
-                <form>
-                    <INPUT TYPE="RADIO" NAME="option" VALUE="1"> PvP <br>
-                    <INPUT TYPE="RADIO" NAME="option" VALUE="2"> PvM <br>
-                    <INPUT TYPE="RADIO" NAME="option" VALUE="3" checked> MvM <br>
-                </form>
+            <div class="radios">
+                <ul class="game-modes">
+                    <li class="game-mode">
+                      <input name="game-mode" type="radio" id="pvp">
+                      <label for="pvp">PVP</label>
+                    </li>
+                  
+                    <li class="game-mode">
+                      <input name="game-mode" type="radio" id="pvm">
+                      <label for="pvm">PVM</label>
+                    </li>
+                  
+                    <li class="game-mode">
+                      <input name="game-mode" type="radio" id="mvm">
+                      <label for="mvm">MVM</label>
+                    </li>
+                  </ul>
             </div>
             <button type="button" class="option-button" id="play">Play</button>
             <div class="option-button">Round</div>
         </div>
         <div id="game">
             <div id="interaction">
-                <div class="area" id="0"></div>
-                <div class="area" id="1"></div>
-                <div class="area" id="3"></div>
-                <div class="area" id="3"></div>
-                <div class="area" id="4"></div>
-                <div class="area" id="5"></div>
-                <div class="area" id="6"></div>
-                <div class="area" id="7"></div>
-                <div class="area" id="8"></div>
+                <div class="area" id="pos0"></div>
+                <div class="area" id="pos1"></div>
+                <div class="area" id="pos3"></div>
+                <div class="area" id="pos3"></div>
+                <div class="area" id="pos4"></div>
+                <div class="area" id="pos5"></div>
+                <div class="area" id="pos6"></div>
+                <div class="area" id="pos7"></div>
+                <div class="area" id="pos8"></div>
             </div>
         </div>
     </div>
-    <script>"./dist/index.js"</script>
+    <script>var exports = {};</script>
+    <script src="./dist/index.js"></script>
 </body>
 
 </html>
