@@ -3,12 +3,12 @@
     padding: 0;
     box-sizing: border-box;
     border: 0;
-    --primary-color: #7691D9;
-    --default-background-color: #00d9ff;
+    --primary-color: #5100FF;
+    --default-background-color: #00ff6a;
 }
 
 body {
-    background-color: rgb(0, 162, 255);
+    background-color: rgb(0, 140, 255);
     font-family: 'Archivo', 'Helvetica Neue', 'Helvetica', Arial, sans-serif;
     text-rendering: optimizeLegibility !important;
     -webkit-font-smoothing: antialiased !important;
@@ -26,6 +26,7 @@ body #container {
     display: flex;
     align-items: center;
     justify-content: left;
+    transition: 0.8s;
 }
 
 body #container #options {
@@ -45,10 +46,6 @@ body #container #options .option-button {
     justify-content: center;
 }
 
-body #container #options .option-button:hover {
-    opacity: 0.9;
-}
-
 body #container #options .option-button:first-child {
     font-size: 45px;
     border-radius: 30px 0px 0px 0px;
@@ -60,7 +57,7 @@ body #container #options .option-button:first-child:hover {
     border-radius: 30px 0px 0px 0px;
     opacity: 100%;
     color: transparent;
-    background-image: url("../src/images/jogo-da-velha.jpg");
+    background-image: url("../src/images/GitHub-Mark.png");
     background-position: center;
     background-size: cover;
     transition: 0.5s;
@@ -82,6 +79,10 @@ body #container #options .option-button:nth-child(3) {
 body #container #options .option-button:nth-child(4) {
     background-color: var(--primary-color);
     border-radius: 0px 0px 0px 30px;
+}
+
+body #container #options .option-button:nth-child(4):hover {
+    background-color: var(--default-background-color);
 }
 
 body #container #game {
@@ -113,26 +114,52 @@ body #container #game #interaction .area {
 }
 
 body #container #game #interaction .area:hover {
-    background-color: rgb(255, 255, 255);
-    opacity: 80%;
-    transition: 0.5s;
-    background-image: url("../src/images/circle.png");
-    background-position: center;
-    background-size: cover;
-
+    background-color: yellow;
+    transition: 0.7s;
+    background-image: url("../src/images/circleicon.png");
 }
 
-.radios {
+body #container #options .gamemode {
     width: 341px;
-    height: 180px;
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: space-around;
+    height: 360px;
     background-color: var(--primary-color);
-  }
+}
 
+body #container #options .gamemode .gamemode-button {
+    width: 341px;
+    height: 120px;
+    background-color: yellow;
+    border: 0px;
+}
 
-.radios .gamemode:nth-child(1) {
-    background-image: url("/src/images/jogo-da-velha.jpg");
+body #container #options .gamemode .gamemode-button:nth-child(1) {
+    background-image: url('../src/images/pvp-341x120.png');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    transition: 0.5s;
+}
+body #container #options .gamemode .gamemode-button:nth-child(1):hover {
+    background-color: var(--primary-color);
+}
+
+body #container #options .gamemode .gamemode-button:nth-child(2) {
+    background-image: url('../src/images/pvm-341x120.png');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    transition: 0.5s;
+}
+body #container #options .gamemode .gamemode-button:nth-child(2):hover {
+    background-color: var(--primary-color);
+}
+body #container #options .gamemode .gamemode-button:nth-child(3) {
+    background-image: url('../src/images/mxm-341x120.png');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    transition: 0.5s;
+}
+body #container #options .gamemode .gamemode-button:nth-child(3):hover {
+    background-color: var(--primary-color);
 }
