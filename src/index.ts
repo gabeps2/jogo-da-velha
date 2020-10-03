@@ -21,7 +21,7 @@ var tabuleiro = [[0, 0, 0], [0, 0, 0], [0, 0, 0]]
 //Tabuleiro com valor 1 = posição marcada com X
 //Tabuleiro com valor 2 = posição marcada com O
 
-var turn = 1; //Define o turno de cada jogador - 0 = X / 1 = O
+var turn = 0; //Define o turno de cada jogador - 0 = X / 1 = O
 
 var counter = [0, 0]; //Registra o número de jogadas de cada player
 
@@ -62,8 +62,9 @@ const checkVitory = (player: number) => {
 
 
 const changeStyle = (line: number, column: number, id: number) => {
-    var xColor = '#0E9DDF'
-    var oColor = '#DF0E0E'
+    var xColor = '#DF0E0E'
+    var oColor = '#00bd4f'
+
 
     var pos = "pos" + id;
 
@@ -77,8 +78,13 @@ const changeStyle = (line: number, column: number, id: number) => {
 
             document.getElementById(pos)?.setAttribute("style",
                 `background-image: url("../src/images/xicon.png"); 
-            background-color: ${oColor}`);
+            background-color: ${xColor}`);
             turn = 1;
+
+            var body = document.getElementById('body');
+            body?.setAttribute("style", '--selected-area-img: url("../src/images/circleicon.png")')
+
+
         } else {
             tabuleiro[line][column] = 1;//Marca a posição com um O
             counter[1] += 1;
@@ -88,8 +94,12 @@ const changeStyle = (line: number, column: number, id: number) => {
 
             document.getElementById(pos)?.setAttribute("style",
                 `background-image: url("../src/images/circleicon.png"); 
-            background-color: ${xColor}`);
+            background-color: ${oColor}`);
+
             turn = 0;
+            var body = document.getElementById('body');
+            body?.setAttribute("style", '--selected-area-img: url("../src/images/xicon.png")')
+
         }
     }
 }

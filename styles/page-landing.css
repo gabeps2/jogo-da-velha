@@ -3,12 +3,13 @@
     padding: 0;
     box-sizing: border-box;
     border: 0;
-    --primary-color: #5100FF;
-    --default-background-color: #00ff6a;
+    --primary-color: #2984d5;
+    --default-background-color: #00bd4f;
+    --selected-area-color: rgb(94, 37, 160);
 }
 
 body {
-    background-color: rgb(0, 140, 255);
+    background-color: rgb(0, 0, 0);
     font-family: 'Archivo', 'Helvetica Neue', 'Helvetica', Arial, sans-serif;
     text-rendering: optimizeLegibility !important;
     -webkit-font-smoothing: antialiased !important;
@@ -16,6 +17,11 @@ body {
     align-items: center;
     justify-content: center;
     padding-top: 10%;
+    background-image: url("../src/images/Backgrounds/2.png");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    --selected-area-img: url("../src/images/xicon.png"); 
 }
 
 body #container {
@@ -57,32 +63,16 @@ body #container #options .option-button:first-child:hover {
     border-radius: 30px 0px 0px 0px;
     opacity: 100%;
     color: transparent;
+    transition: 0.8s;
     background-image: url("../src/images/GitHub-Mark.png");
     background-position: center;
     background-size: cover;
-    transition: 0.5s;
-}
-
-body #container #options .option-button:nth-child(2) {
-    font-size: 35px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-direction: column;
+    
 }
 
 body #container #options .option-button:nth-child(3) {
-    font-size: 35px;
-    background-color: var(--primary-color);
-}
-
-body #container #options .option-button:nth-child(4) {
     background-color: var(--primary-color);
     border-radius: 0px 0px 0px 30px;
-}
-
-body #container #options .option-button:nth-child(4):hover {
-    background-color: var(--default-background-color);
 }
 
 body #container #game {
@@ -114,52 +104,20 @@ body #container #game #interaction .area {
 }
 
 body #container #game #interaction .area:hover {
-    background-color: yellow;
     transition: 0.7s;
-    background-image: url("../src/images/circleicon.png");
+    background-image: var(--selected-area-img);
 }
 
 body #container #options .gamemode {
     width: 341px;
     height: 360px;
     background-color: var(--primary-color);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
 }
 
-body #container #options .gamemode .gamemode-button {
-    width: 341px;
-    height: 120px;
-    background-color: yellow;
-    border: 0px;
-}
 
-body #container #options .gamemode .gamemode-button:nth-child(1) {
-    background-image: url('../src/images/pvp-341x120.png');
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
-    transition: 0.5s;
-}
-body #container #options .gamemode .gamemode-button:nth-child(1):hover {
-    background-color: var(--primary-color);
-}
 
-body #container #options .gamemode .gamemode-button:nth-child(2) {
-    background-image: url('../src/images/pvm-341x120.png');
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
-    transition: 0.5s;
-}
-body #container #options .gamemode .gamemode-button:nth-child(2):hover {
-    background-color: var(--primary-color);
-}
-body #container #options .gamemode .gamemode-button:nth-child(3) {
-    background-image: url('../src/images/mxm-341x120.png');
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
-    transition: 0.5s;
-}
-body #container #options .gamemode .gamemode-button:nth-child(3):hover {
-    background-color: var(--primary-color);
-}
+/* Buttons estilization*/

@@ -12,7 +12,7 @@ var tabuleiro = [[0, 0, 0], [0, 0, 0], [0, 0, 0]];
 //Tabuleiro com valor 0 = posição vazia
 //Tabuleiro com valor 1 = posição marcada com X
 //Tabuleiro com valor 2 = posição marcada com O
-var turn = 1; //Define o turno de cada jogador - 0 = X / 1 = O
+var turn = 0; //Define o turno de cada jogador - 0 = X / 1 = O
 var counter = [0, 0]; //Registra o número de jogadas de cada player
 var playerX = 0; //Identificação de cada player
 var playerO = 1;
@@ -46,8 +46,8 @@ var checkVitory = function (player) {
 };
 var changeStyle = function (line, column, id) {
     var _a, _b;
-    var xColor = '#0E9DDF';
-    var oColor = '#DF0E0E';
+    var xColor = '#DF0E0E';
+    var oColor = '#00bd4f';
     var pos = "pos" + id;
     if (tabuleiro[line][column] == 0) {
         if (turn == 0) {
@@ -55,16 +55,20 @@ var changeStyle = function (line, column, id) {
             counter[0] += 1;
             checkVitory(playerX);
             console.log(tabuleiro);
-            (_a = document.getElementById(pos)) === null || _a === void 0 ? void 0 : _a.setAttribute("style", "background-image: url(\"../src/images/xicon.png\"); \n            background-color: " + oColor);
+            (_a = document.getElementById(pos)) === null || _a === void 0 ? void 0 : _a.setAttribute("style", "background-image: url(\"../src/images/xicon.png\"); \n            background-color: " + xColor);
             turn = 1;
+            var body = document.getElementById('body');
+            body === null || body === void 0 ? void 0 : body.setAttribute("style", '--selected-area-img: url("../src/images/circleicon.png")');
         }
         else {
             tabuleiro[line][column] = 1; //Marca a posição com um O
             counter[1] += 1;
             checkVitory(playerO);
             console.log(tabuleiro);
-            (_b = document.getElementById(pos)) === null || _b === void 0 ? void 0 : _b.setAttribute("style", "background-image: url(\"../src/images/circleicon.png\"); \n            background-color: " + xColor);
+            (_b = document.getElementById(pos)) === null || _b === void 0 ? void 0 : _b.setAttribute("style", "background-image: url(\"../src/images/circleicon.png\"); \n            background-color: " + oColor);
             turn = 0;
+            var body = document.getElementById('body');
+            body === null || body === void 0 ? void 0 : body.setAttribute("style", '--selected-area-img: url("../src/images/xicon.png")');
         }
     }
 };
