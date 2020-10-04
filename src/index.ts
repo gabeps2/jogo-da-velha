@@ -136,12 +136,12 @@ const changeStyle = (line: number, column: number, id: number) => {
             vetRandomNumber[id] = 1;
 
             if (checkVitory(2) == victory) {
-                round?.setAttribute("style", 'background-color: #42f563; background-image: url("../src/images/xicon-dark.png")')
+                round?.setAttribute("style", 'background-color: #42f563; background-image: url("../src/images/victory-x-icon.png")')
                 roundText?.setAttribute("data-content", "Victory!");
                 return true;
             }
             else if (checkVitory(2) == tie) {
-                round?.setAttribute("style", 'background-color: #ffea00; background-image: url("../src/images/r2d2.png")')
+                round?.setAttribute("style", 'background-color: #ffea00; background-image: url("../src/images/tie-icon.png")')
                 roundText?.setAttribute("data-content", "Empate!");
                 return true;
             }
@@ -169,7 +169,7 @@ const changeStyle = (line: number, column: number, id: number) => {
             vetRandomNumber[id] = 1;
 
             if (checkVitory(1) == victory) {
-                round?.setAttribute("style", 'background-color: #42f563; background-image: url("../src/images/circleicon-dark.png")')
+                round?.setAttribute("style", 'background-color: #42f563; background-image: url("../src/images/victory-circle-icon.png")')
                 roundText?.setAttribute("data-content", "Victory!");
                 return true;
             }

@@ -107,12 +107,12 @@ var changeStyle = function (line, column, id) {
             (_a = document.getElementById(pos)) === null || _a === void 0 ? void 0 : _a.setAttribute("style", "background-image: url(\"../src/images/xicon-red.png\"); \n            background-color: " + xColor);
             vetRandomNumber[id] = 1;
             if (checkVitory(2) == victory) {
-                round === null || round === void 0 ? void 0 : round.setAttribute("style", 'background-color: #42f563; background-image: url("../src/images/xicon-dark.png")');
+                round === null || round === void 0 ? void 0 : round.setAttribute("style", 'background-color: #42f563; background-image: url("../src/images/victory-x-icon.png")');
                 roundText === null || roundText === void 0 ? void 0 : roundText.setAttribute("data-content", "Victory!");
                 return true;
             }
             else if (checkVitory(2) == tie) {
-                round === null || round === void 0 ? void 0 : round.setAttribute("style", 'background-color: #ffea00; background-image: url("../src/images/r2d2.png")');
+                round === null || round === void 0 ? void 0 : round.setAttribute("style", 'background-color: #ffea00; background-image: url("../src/images/tie-icon.png")');
                 roundText === null || roundText === void 0 ? void 0 : roundText.setAttribute("data-content", "Empate!");
                 return true;
             }
@@ -131,7 +131,7 @@ var changeStyle = function (line, column, id) {
             (_b = document.getElementById(pos)) === null || _b === void 0 ? void 0 : _b.setAttribute("style", "background-image: url(\"../src/images/circleicon-dark.png\"); \n            background-color: " + oColor);
             vetRandomNumber[id] = 1;
             if (checkVitory(1) == victory) {
-                round === null || round === void 0 ? void 0 : round.setAttribute("style", 'background-color: #42f563; background-image: url("../src/images/circleicon-dark.png")');
+                round === null || round === void 0 ? void 0 : round.setAttribute("style", 'background-color: #42f563; background-image: url("../src/images/victory-circle-icon.png")');
                 roundText === null || roundText === void 0 ? void 0 : roundText.setAttribute("data-content", "Victory!");
                 return true;
             }
