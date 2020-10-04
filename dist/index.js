@@ -1,13 +1,33 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-var es6_promise_1 = require("es6-promise");
-require("webpack");
 //Buttons
 var changeStyleButtons = function (element) {
     element.style.backgroundColor = '#5100FF';
 };
+var gamemode; //0 = PvP, 1 = PvM, 2 = MvM
 var buttonPvP = document.getElementById('pvp');
 buttonPvP === null || buttonPvP === void 0 ? void 0 : buttonPvP.addEventListener('click', function () {
+    gamemode = 0;
+    buttonPvP === null || buttonPvP === void 0 ? void 0 : buttonPvP.setAttribute("class", "black");
+    buttonPvM === null || buttonPvM === void 0 ? void 0 : buttonPvM.setAttribute("class", "white");
+    buttonMvM === null || buttonMvM === void 0 ? void 0 : buttonMvM.setAttribute("class", "white");
+    console.log(gamemode);
+});
+var buttonPvM = document.getElementById('pvm');
+buttonPvM === null || buttonPvM === void 0 ? void 0 : buttonPvM.addEventListener('click', function () {
+    buttonPvP === null || buttonPvP === void 0 ? void 0 : buttonPvP.setAttribute("class", "white");
+    buttonPvM === null || buttonPvM === void 0 ? void 0 : buttonPvM.setAttribute("class", "black");
+    buttonMvM === null || buttonMvM === void 0 ? void 0 : buttonMvM.setAttribute("class", "white");
+    gamemode = 1;
+    console.log(gamemode);
+});
+var buttonMvM = document.getElementById('mvm');
+buttonMvM === null || buttonMvM === void 0 ? void 0 : buttonMvM.addEventListener('click', function () {
+    buttonPvP === null || buttonPvP === void 0 ? void 0 : buttonPvP.setAttribute("class", "white");
+    buttonPvM === null || buttonPvM === void 0 ? void 0 : buttonPvM.setAttribute("class", "white");
+    buttonMvM === null || buttonMvM === void 0 ? void 0 : buttonMvM.setAttribute("class", "black");
+    gamemode = 2;
+    console.log(gamemode);
 });
 //Elements HTML
 var body = document.getElementById('body');
@@ -15,6 +35,7 @@ var round = document.getElementById('round-now');
 var roundText = document.getElementById('round-text');
 //Tabuleiro
 var tabuleiro = [[0, 0, 0], [0, 0, 0], [0, 0, 0]];
+var vetRandomNumber = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0]; //Armazena as casas livres
 //Tabuleiro com valor 0 = posição vazia
 //Tabuleiro com valor 1 = posição marcada com X
 //Tabuleiro com valor 2 = posição marcada com O
@@ -51,6 +72,7 @@ var checkVitory = function (player) {
             }
             if (count == 3) {
                 console.log("Victory! 2");
+                roundText === null || roundText === void 0 ? void 0 : roundText.setAttribute("value", "Victory!");
                 return 2;
             }
         }
@@ -66,7 +88,7 @@ var checkVitory = function (player) {
             return 2;
         }
     }
-    if (counter[0] + counter[1] == 9)
+    if (counter[0] + counter[1] == 9) //Verifica se houve empate
         return 3;
     return 1;
 };
@@ -80,6 +102,7 @@ var changeStyle = function (line, column, id) {
             tabuleiro[line][column] = 2; //Marca a posição com um X
             counter[playerX] += 1;
             (_a = document.getElementById(pos)) === null || _a === void 0 ? void 0 : _a.setAttribute("style", "background-image: url(\"../src/images/xicon-red.png\"); \n            background-color: " + xColor);
+            vetRandomNumber[id] = 1;
             if (checkVitory(2) == victory) {
                 round === null || round === void 0 ? void 0 : round.setAttribute("style", 'background-color: #42f563; background-image: url("../src/images/xicon-dark.png")');
                 roundText === null || roundText === void 0 ? void 0 : roundText.setAttribute("data-content", "Victory!");
@@ -93,11 +116,14 @@ var changeStyle = function (line, column, id) {
             body === null || body === void 0 ? void 0 : body.setAttribute("style", '--selected-area-img: url("../src/images/circleicon.png")');
             round === null || round === void 0 ? void 0 : round.setAttribute("style", 'background-image: url("../src/images/circleicon.png"); background-color: #ff4655');
             turn = 1;
+            if (gamemode == 1)
+                randomPlay();
         }
         else {
             tabuleiro[line][column] = 1; //Marca a posição com um O
             counter[playerO] += 1;
             (_b = document.getElementById(pos)) === null || _b === void 0 ? void 0 : _b.setAttribute("style", "background-image: url(\"../src/images/circleicon-dark.png\"); \n            background-color: " + oColor);
+            vetRandomNumber[id] = 1;
             if (checkVitory(1) == victory) {
                 round === null || round === void 0 ? void 0 : round.setAttribute("style", 'background-color: #42f563; background-image: url("../src/images/circleicon-dark.png")');
                 roundText === null || roundText === void 0 ? void 0 : roundText.setAttribute("data-content", "Victory!");
@@ -116,19 +142,16 @@ var changeStyle = function (line, column, id) {
 };
 var getNumRandom = function () {
     var numRandom = Math.random() * (10 - 1) + 1;
+    console.log(Math.floor(numRandom));
     return (Math.floor(numRandom));
 };
 var randomPlay = function () {
-    var vetRandomNumbers = new Array(9);
-    var contains;
+    var contains = true;
     do {
         var numRandom = getNumRandom();
-        contains = false;
-        for (var i = 0; i < 9; i++) {
-            if (numRandom == vetRandomNumbers[i])
-                contains = true;
-        }
-    } while (contains && numFreePositions > 0);
+        if (vetRandomNumber[numRandom] == 0)
+            contains = false;
+    } while (contains);
     numFreePositions--;
     var positions = new Array(10);
     positions[1] = { line: 0, column: 0 };
@@ -146,10 +169,6 @@ var randomPlay = function () {
         numRep = 0;
     }
 };
-function sleep(ms) {
-    return new es6_promise_1.Promise(function (resolve) { return setTimeout(randomPlay, ms); });
-}
-sleep(3000);
 //Verifica os eventos nas posições
 var pos1 = document.getElementById('pos1');
 pos1 === null || pos1 === void 0 ? void 0 : pos1.addEventListener('click', function () { return changeStyle(0, 0, 1); });

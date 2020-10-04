@@ -1,7 +1,6 @@
 import Jogador from './scripts/Jogador'
 import Tabuleiro from './scripts/Tabuleiro'
 import { Promise } from 'es6-promise';
-import 'webpack'
 
 interface Positions {
     line: number;
@@ -12,9 +11,33 @@ const changeStyleButtons = (element: HTMLElement) => {
     element.style.backgroundColor = '#5100FF';
 }
 
+var gamemode:number; //0 = PvP, 1 = PvM, 2 = MvM
+
 var buttonPvP = document.getElementById('pvp');
 buttonPvP?.addEventListener('click', () => {
+    gamemode = 0;
+    buttonPvP?.setAttribute("class","black")
+    buttonPvM?.setAttribute("class","white")
+    buttonMvM?.setAttribute("class","white")
+    console.log(gamemode)
+})
 
+var buttonPvM = document.getElementById('pvm');
+buttonPvM?.addEventListener('click', () => {
+    buttonPvP?.setAttribute("class","white")
+    buttonPvM?.setAttribute("class","black")
+    buttonMvM?.setAttribute("class","white")
+    gamemode = 1;
+    console.log(gamemode)
+})
+
+var buttonMvM = document.getElementById('mvm');
+buttonMvM?.addEventListener('click', () => {
+    buttonPvP?.setAttribute("class","white")
+    buttonPvM?.setAttribute("class","white")
+    buttonMvM?.setAttribute("class","black")
+    gamemode = 2;
+    console.log(gamemode)
 })
 
 //Elements HTML
@@ -22,11 +45,9 @@ var body = document.getElementById('body');
 var round = document.getElementById('round-now');
 var roundText = document.getElementById('round-text')
 
-
-
-
 //Tabuleiro
 var tabuleiro = [[0, 0, 0], [0, 0, 0], [0, 0, 0]]
+var vetRandomNumber = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0]//Armazena as casas livres
 
 //Tabuleiro com valor 0 = posição vazia
 //Tabuleiro com valor 1 = posição marcada com X
@@ -73,6 +94,7 @@ const checkVitory = (player: number): number => {
             }
             if (count == 3) {
                 console.log("Victory! 2")
+                roundText?.setAttribute("value","Victory!")
                 return 2;
             }
         }
@@ -88,7 +110,7 @@ const checkVitory = (player: number): number => {
             return 2;
         }
     }
-    if (counter[0] + counter[1] == 9)
+    if (counter[0] + counter[1] == 9)//Verifica se houve empate
         return 3;
 
     return 1;
@@ -109,6 +131,8 @@ const changeStyle = (line: number, column: number, id: number) => {
                 `background-image: url("../src/images/xicon-red.png"); 
             background-color: ${xColor}`);
 
+            vetRandomNumber[id] = 1;
+
             if (checkVitory(2) == victory) {
                 round?.setAttribute("style", 'background-color: #42f563; background-image: url("../src/images/xicon-dark.png")')
                 roundText?.setAttribute("data-content", "Victory!");
@@ -125,6 +149,8 @@ const changeStyle = (line: number, column: number, id: number) => {
             round?.setAttribute("style", 'background-image: url("../src/images/circleicon.png"); background-color: #ff4655');
 
             turn = 1;
+            if (gamemode == 1)
+                randomPlay();
 
         } else {
             tabuleiro[line][column] = 1;//Marca a posição com um O
@@ -133,6 +159,8 @@ const changeStyle = (line: number, column: number, id: number) => {
             document.getElementById(pos)?.setAttribute("style",
                 `background-image: url("../src/images/circleicon-dark.png"); 
             background-color: ${oColor}`);
+
+            vetRandomNumber[id] = 1;
 
             if (checkVitory(1) == victory) {
                 round?.setAttribute("style", 'background-color: #42f563; background-image: url("../src/images/circleicon-dark.png")')
@@ -156,23 +184,20 @@ const changeStyle = (line: number, column: number, id: number) => {
 
 const getNumRandom = () => {
     const numRandom = Math.random() * (10 - 1) + 1;
+
+    console.log(Math.floor(numRandom));
     return (Math.floor(numRandom));
 }
 
 const randomPlay = () => {
 
-    var vetRandomNumbers = new Array(9);
-
-    var contains;
+    var contains = true;
 
     do {
         var numRandom = getNumRandom();
-        contains = false;
-        for (var i = 0; i < 9; i++) {
-            if (numRandom == vetRandomNumbers[i])
-                contains = true;
-        }
-    } while (contains && numFreePositions > 0)
+        if (vetRandomNumber[numRandom] == 0)
+            contains = false;
+    } while (contains)
 
     numFreePositions--;
 
@@ -194,12 +219,6 @@ const randomPlay = () => {
     }
 }
 
-
-function sleep(ms: number) {
-    return new Promise(resolve => setTimeout(randomPlay, ms));
-}
-
-sleep(3000)
 
 
 

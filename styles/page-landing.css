@@ -13,6 +13,8 @@
     --primary-color:#292C31;
     --default-background-color: #ffffff;
     --selected-area-color: rgb(94, 37, 160);
+    --background-color-button:  #ece8e1;
+    --background-color-button-hover:#ff4655;
 }
 
 body {

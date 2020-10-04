@@ -9,7 +9,6 @@
   "dependencies": {
     "@babel/plugin-transform-modules-commonjs": "^7.10.4",
     "commonjs": "^0.0.1",
-    "es6-promise": "^4.2.8",
-    "webpack": "^4.44.2"
+    "es6-promise": "^4.2.8"
   }
 }
