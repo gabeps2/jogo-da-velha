@@ -39,6 +39,8 @@ body {
     --game-area-heigth: 132px:
 }
 
+
+/* Buttons animation */
 div a {
     font-weight: 300;
     color: #ff4655;
@@ -72,8 +74,6 @@ div a.transparent>p {
     background: #0f1923;
     color: #ece8e1;
 }
-
-
 
 div a p {
     height: 54px;
@@ -128,8 +128,7 @@ div a:hover span.bg {
     width: 110%;
 }
 
-
-/*---------------------------------------------------------------------------------------------*/
+/* Containers */
 
 body #container {
     width: var(--width-container);
@@ -151,7 +150,6 @@ body #container #options {
     background-color:#1F2326;
     padding: 3px;
 }
-
 
 body #container #options #jogo-da-velha a p {
     font-size: 40px;
@@ -186,7 +184,6 @@ body #container #options #round-now{
     transition: 0.5s;
 }
 
-
 body #container #game #interaction{
     display: flex;
     align-items: center;
@@ -199,6 +196,7 @@ body #container #game #interaction{
     box-sizing: border-box;
     padding: 30px;
 }
+
 body #container #game .area{
     width: 132px;
     height: 132px;
@@ -212,10 +210,9 @@ body #container #game .area{
     background-size: cover;
     transition: 0.8s;
 }
+
 body #container #game .area:hover{
     transition: 00.5s;
     background-color:#FF4656;
     background-image: var(--selected-area-img);
 }
-
-/* Buttons estilization*/
