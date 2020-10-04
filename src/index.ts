@@ -11,32 +11,34 @@ const changeStyleButtons = (element: HTMLElement) => {
     element.style.backgroundColor = '#5100FF';
 }
 
-var gamemode:number; //0 = PvP, 1 = PvM, 2 = MvM
-
+var gamemode: number; //0 = PvP, 1 = PvM, 2 = MvM
+gamemode = 1
 var buttonPvP = document.getElementById('pvp');
 buttonPvP?.addEventListener('click', () => {
     gamemode = 0;
-    buttonPvP?.setAttribute("class","black")
-    buttonPvM?.setAttribute("class","white")
-    buttonMvM?.setAttribute("class","white")
+    buttonPvP?.setAttribute("class", "black")
+    buttonPvM?.setAttribute("class", "white")
+    buttonMvM?.setAttribute("class", "white")
     console.log(gamemode)
 })
 
 var buttonPvM = document.getElementById('pvm');
+buttonPvM?.setAttribute("class", "black")
 buttonPvM?.addEventListener('click', () => {
-    buttonPvP?.setAttribute("class","white")
-    buttonPvM?.setAttribute("class","black")
-    buttonMvM?.setAttribute("class","white")
+    buttonPvP?.setAttribute("class", "white")
+    buttonPvM?.setAttribute("class", "black")
+    buttonMvM?.setAttribute("class", "white")
     gamemode = 1;
     console.log(gamemode)
 })
 
 var buttonMvM = document.getElementById('mvm');
 buttonMvM?.addEventListener('click', () => {
-    buttonPvP?.setAttribute("class","white")
-    buttonPvM?.setAttribute("class","white")
-    buttonMvM?.setAttribute("class","black")
+    buttonPvP?.setAttribute("class", "white")
+    buttonPvM?.setAttribute("class", "white")
+    buttonMvM?.setAttribute("class", "black")
     gamemode = 2;
+    randomPlay();
     console.log(gamemode)
 })
 
@@ -94,7 +96,7 @@ const checkVitory = (player: number): number => {
             }
             if (count == 3) {
                 console.log("Victory! 2")
-                roundText?.setAttribute("value","Victory!")
+                roundText?.setAttribute('content', "text!!!!")
                 return 2;
             }
         }
@@ -149,8 +151,12 @@ const changeStyle = (line: number, column: number, id: number) => {
             round?.setAttribute("style", 'background-image: url("../src/images/circleicon.png"); background-color: #ff4655');
 
             turn = 1;
-            if (gamemode == 1)
-                randomPlay();
+            if (gamemode == 1 || gamemode == 2) {
+                setTimeout(() => {
+                    randomPlay();
+                }, 1000);
+            }
+
 
         } else {
             tabuleiro[line][column] = 1;//Marca a posição com um O
@@ -178,6 +184,12 @@ const changeStyle = (line: number, column: number, id: number) => {
             round?.setAttribute("style", 'background-image: url("../src/images/xicon.png"); background-color: #292C31');
 
             turn = 0;
+            if (gamemode == 2) {
+                setTimeout(() => {
+                    randomPlay();
+                }, 1000);
+
+            }
         }
     }
 }

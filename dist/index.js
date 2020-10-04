@@ -5,6 +5,7 @@ var changeStyleButtons = function (element) {
     element.style.backgroundColor = '#5100FF';
 };
 var gamemode; //0 = PvP, 1 = PvM, 2 = MvM
+gamemode = 1;
 var buttonPvP = document.getElementById('pvp');
 buttonPvP === null || buttonPvP === void 0 ? void 0 : buttonPvP.addEventListener('click', function () {
     gamemode = 0;
@@ -14,6 +15,7 @@ buttonPvP === null || buttonPvP === void 0 ? void 0 : buttonPvP.addEventListener
     console.log(gamemode);
 });
 var buttonPvM = document.getElementById('pvm');
+buttonPvM === null || buttonPvM === void 0 ? void 0 : buttonPvM.setAttribute("class", "black");
 buttonPvM === null || buttonPvM === void 0 ? void 0 : buttonPvM.addEventListener('click', function () {
     buttonPvP === null || buttonPvP === void 0 ? void 0 : buttonPvP.setAttribute("class", "white");
     buttonPvM === null || buttonPvM === void 0 ? void 0 : buttonPvM.setAttribute("class", "black");
@@ -27,6 +29,7 @@ buttonMvM === null || buttonMvM === void 0 ? void 0 : buttonMvM.addEventListener
     buttonPvM === null || buttonPvM === void 0 ? void 0 : buttonPvM.setAttribute("class", "white");
     buttonMvM === null || buttonMvM === void 0 ? void 0 : buttonMvM.setAttribute("class", "black");
     gamemode = 2;
+    randomPlay();
     console.log(gamemode);
 });
 //Elements HTML
@@ -72,7 +75,7 @@ var checkVitory = function (player) {
             }
             if (count == 3) {
                 console.log("Victory! 2");
-                roundText === null || roundText === void 0 ? void 0 : roundText.setAttribute("value", "Victory!");
+                roundText === null || roundText === void 0 ? void 0 : roundText.setAttribute('content', "text!!!!");
                 return 2;
             }
         }
@@ -116,8 +119,11 @@ var changeStyle = function (line, column, id) {
             body === null || body === void 0 ? void 0 : body.setAttribute("style", '--selected-area-img: url("../src/images/circleicon.png")');
             round === null || round === void 0 ? void 0 : round.setAttribute("style", 'background-image: url("../src/images/circleicon.png"); background-color: #ff4655');
             turn = 1;
-            if (gamemode == 1)
-                randomPlay();
+            if (gamemode == 1 || gamemode == 2) {
+                setTimeout(function () {
+                    randomPlay();
+                }, 1000);
+            }
         }
         else {
             tabuleiro[line][column] = 1; //Marca a posição com um O
@@ -137,6 +143,11 @@ var changeStyle = function (line, column, id) {
             body === null || body === void 0 ? void 0 : body.setAttribute("style", '--selected-area-img: url("../src/images/xicon.png")');
             round === null || round === void 0 ? void 0 : round.setAttribute("style", 'background-image: url("../src/images/xicon.png"); background-color: #292C31');
             turn = 0;
+            if (gamemode == 2) {
+                setTimeout(function () {
+                    randomPlay();
+                }, 1000);
+            }
         }
     }
 };
