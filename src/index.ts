@@ -13,6 +13,12 @@ buttonPvP?.addEventListener('click', () => {
 
 })
 
+//Elements HTML
+var body = document.getElementById('body');
+var round = document.getElementById('round-now');
+
+
+
 
 //Tabuleiro
 var tabuleiro = [[0, 0, 0], [0, 0, 0], [0, 0, 0]]
@@ -42,6 +48,8 @@ const checkVitory = (player: number) => {
         for (var j = 0; j < 3; j++) {
             if (tabuleiro[i][j] == player)
                 count++;
+            console.log("valor de i: " + i)
+            console.log("valor de j: " + j)
             if (count == 3) {
                 console.log("Victory!")
                 return 2;
@@ -49,8 +57,9 @@ const checkVitory = (player: number) => {
         }
         count = 0;
         for (var j = 0; j < 3; j++) {
-            if (tabuleiro[j][i] == player)
+            if (tabuleiro[j][i] == player) {
                 count++;
+            }
             if (count == 3) {
                 console.log("Victory! 2")
                 return 2;
@@ -59,12 +68,9 @@ const checkVitory = (player: number) => {
     }
 }
 
-
-
 const changeStyle = (line: number, column: number, id: number) => {
-    var xColor = '#DF0E0E'
-    var oColor = '#00bd4f'
-
+    var xColor = '#292C31'
+    var oColor = '#ff4655'
 
     var pos = "pos" + id;
 
@@ -77,14 +83,15 @@ const changeStyle = (line: number, column: number, id: number) => {
             console.log(tabuleiro);
 
             document.getElementById(pos)?.setAttribute("style",
-                `background-image: url("../src/images/xicon.png"); 
+                `background-image: url("../src/images/xicon-red.png"); 
             background-color: ${xColor}`);
-            turn = 1;
 
-            var body = document.getElementById('body');
+
             body?.setAttribute("style", '--selected-area-img: url("../src/images/circleicon.png")')
 
+            round?.setAttribute("style", 'background-image: url("../src/images/circleicon.png"); background-color: #ff4655');
 
+            turn = 1;
         } else {
             tabuleiro[line][column] = 1;//Marca a posição com um O
             counter[1] += 1;
@@ -93,17 +100,39 @@ const changeStyle = (line: number, column: number, id: number) => {
             console.log(tabuleiro);
 
             document.getElementById(pos)?.setAttribute("style",
-                `background-image: url("../src/images/circleicon.png"); 
+                `background-image: url("../src/images/circleicon-dark.png"); 
             background-color: ${oColor}`);
 
-            turn = 0;
-            var body = document.getElementById('body');
             body?.setAttribute("style", '--selected-area-img: url("../src/images/xicon.png")')
 
+            round?.setAttribute("style", 'background-image: url("../src/images/xicon.png"); background-color: #292C31');
+
+            turn = 0;
         }
     }
 }
 
+const getNumRandom = () => {
+    const numRandom = Math.random() * (9 - 0) + 0;
+    return (Math.floor(numRandom));
+}
+
+const randomPlay = () => {
+
+    var vetRandomNumbers = new Array(9);
+    
+    var contains;
+
+    do {
+        var numRandom = getNumRandom();
+        for (var i = 0; i < 9; i++) {
+            if (numRandom == vetRandomNumbers[i])
+                contains = true;
+        }
+    } while (contains)
+}
+
+//Verifica as posições
 var pos1 = document.getElementById('pos1')
 pos1?.addEventListener('click', () => changeStyle(0, 0, 1))
 var pos2 = document.getElementById('pos2')

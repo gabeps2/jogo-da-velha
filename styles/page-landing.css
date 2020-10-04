@@ -1,34 +1,138 @@
+@font-face{
+    font-family: Valorant;
+    src: url('../src//fonts/Valorant\ Font.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
     border: 0;
-    --primary-color: #2984d5;
-    --default-background-color: #00bd4f;
+    --primary-color:#292C31;
+    --default-background-color: #ffffff;
     --selected-area-color: rgb(94, 37, 160);
 }
 
 body {
     background-color: rgb(0, 0, 0);
-    font-family: 'Archivo', 'Helvetica Neue', 'Helvetica', Arial, sans-serif;
+    font-family: Valorant;
     text-rendering: optimizeLegibility !important;
     -webkit-font-smoothing: antialiased !important;
     display: flex;
     align-items: center;
     justify-content: center;
     padding-top: 10%;
-    background-image: url("../src/images/Backgrounds/2.png");
+    background-image: url("../src/images/Backgrounds/7.png");
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
-    --selected-area-img: url("../src/images/xicon.png"); 
+    --selected-area-img: url("../src/images/xicon.png");
+    --width-container: 768px;
+    --height-container: 540px;
+    --options-buttons-width: 240px;
+    --options-buttons-heigth: 124px;
+    --game-area-width: 132px;
+    --game-area-heigth: 132px:
 }
 
+div a {
+    font-weight: 300;
+    color: #ff4655;
+    text-align: center;
+    text-transform: uppercase;
+    text-decoration: none;
+    box-shadow: 0 0 0 1px inset rgba(236, 232, 225, 0.3);
+    position: relative;
+    display: flex;
+    padding: 3px;
+}
+
+div a.white:hover>p {
+    color: #ece8e1;
+}
+
+div a.white>p {
+    background: #ece8e1;
+    color: #0f1923;
+}
+
+div a.transparent:hover>p {
+    color: #ece8e1;
+}
+
+div a.transparent:hover>p span.text {
+    box-shadow: 0 0 0 1px #ece8e1;
+}
+
+div a.transparent>p {
+    background: #0f1923;
+    color: #ece8e1;
+}
+
+
+
+div a p {
+    height: 54px;
+    line-height: 54px;
+    box-sizing: border-box;
+    z-index: 1;
+    left: 0;
+    width: 100%;
+    position: relative;
+    overflow: hidden;
+}
+
+div a p span.base {
+    box-sizing: border-box;
+    position: absolute;
+    z-index: 2;
+    width: 100%;
+    height: 100%;
+    left: 0;
+}
+
+div a p span.bg {
+    left: -5%;
+    position: absolute;
+    background: #ff4655;
+    width: 0;
+    height: 100%;
+    z-index: 3;
+    -webkit-transition: 0.3s ease-out all;
+    transition: 0.3s ease-out all;
+    -webkit-transform: skewX(-10deg);
+    transform: skewX(-10deg);
+}
+
+div a p span.text {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 4;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    left: 0;
+    top: 0;
+}
+
+div a:hover {
+    color: #ece8e1;
+}
+
+div a:hover span.bg {
+    width: 110%;
+}
+
+
+/*---------------------------------------------------------------------------------------------*/
+
 body #container {
-    width: 1024px;
-    height: 720px;
+    width: var(--width-container);
+    height: var(--height-container);
     background-color: white;
-    border-radius: 30px;
     display: flex;
     align-items: center;
     justify-content: left;
@@ -36,88 +140,79 @@ body #container {
 }
 
 body #container #options {
-    width: 341px;
-    height: 720px;
+    width: 256px;
+    height: 540px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-direction: column;
+    background-color:#1F2326;
+    padding: 3px;
 }
 
-body #container #options .option-button {
-    width: 341px;
-    height: 180px;
-    font-family: Poppins;
-    color: white;
-    background-color: var(--primary-color);
-    transition: 0.2s;
-    display: flex;
+
+body #container #options #jogo-da-velha a p {
+    font-size: 40px;
+    width: 240px;
+    height: 124px;
     align-items: center;
     justify-content: center;
+
 }
 
-body #container #options .option-button:first-child {
-    font-size: 45px;
-    border-radius: 30px 0px 0px 0px;
+body #container #options #game-mode {
+    width: 240px;
+    height: 178px;
+    font-size: 28px;
+}
+
+body #container #options #round {
+    
+    width: 240px;
+    height: 206px;
+    background-color: var(--primary-color);
+}
+
+body #container #options #round-now{
+    display: flex;
+    width: 240px;
+    height: 142px;
+    background-color:#1F2326;
+    background-position: center;
+    background-size: cover;
     transition: 0.5s;
 }
 
-body #container #options .option-button:first-child:hover {
-    font-size: 45px;
-    border-radius: 30px 0px 0px 0px;
-    opacity: 100%;
-    color: transparent;
-    transition: 0.8s;
-    background-image: url("../src/images/GitHub-Mark.png");
-    background-position: center;
-    background-size: cover;
-    
-}
 
-body #container #options .option-button:nth-child(3) {
-    background-color: var(--primary-color);
-    border-radius: 0px 0px 0px 30px;
-}
-
-body #container #game {
+body #container #game #interaction{
     display: flex;
     align-items: center;
-    justify-content: center;
-    flex-direction: column;
-}
-
-body #container #game #interaction {
-    display: flex;
-    justify-content: center;
-    flex-direction: row;
+    justify-content: space-between;
+    flex-direction: row ;
     flex-wrap: wrap;
+    width: 512px;
+    height: 540px;
+    background-color: #ffffff;
+    box-sizing: border-box;
+    padding: 30px;
 }
-
-body #container #game #interaction .area {
-    width: 160px;
-    height: 160px;
-    border-radius: 20px;
+body #container #game .area{
+    width: 132px;
+    height: 132px;
     background-color: var(--primary-color);
-    margin: 10px;
-    box-shadow: 7px 10px 5px rgb(179, 179, 179);
+    margin: 5px;
+    box-shadow: 7px 7px 3px rgb(79, 76, 76);
     align-items: center;
     justify-content: center;
     flex-direction: column;
     background-position: center;
     background-size: cover;
+    transition: 0.8s;
 }
-
-body #container #game #interaction .area:hover {
-    transition: 0.7s;
+body #container #game .area:hover{
+    transition: 00.5s;
+    background-color:#FF4656;
     background-image: var(--selected-area-img);
 }
-
-body #container #options .gamemode {
-    width: 341px;
-    height: 360px;
-    background-color: var(--primary-color);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-}
-
-
 
 /* Buttons estilization*/

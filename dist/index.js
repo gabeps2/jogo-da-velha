@@ -7,6 +7,9 @@ var changeStyleButtons = function (element) {
 var buttonPvP = document.getElementById('pvp');
 buttonPvP === null || buttonPvP === void 0 ? void 0 : buttonPvP.addEventListener('click', function () {
 });
+//Elements HTML
+var body = document.getElementById('body');
+var round = document.getElementById('round-now');
 //Tabuleiro
 var tabuleiro = [[0, 0, 0], [0, 0, 0], [0, 0, 0]];
 //Tabuleiro com valor 0 = posição vazia
@@ -28,6 +31,8 @@ var checkVitory = function (player) {
         for (var j = 0; j < 3; j++) {
             if (tabuleiro[i][j] == player)
                 count++;
+            console.log("valor de i: " + i);
+            console.log("valor de j: " + j);
             if (count == 3) {
                 console.log("Victory!");
                 return 2;
@@ -35,8 +40,9 @@ var checkVitory = function (player) {
         }
         count = 0;
         for (var j = 0; j < 3; j++) {
-            if (tabuleiro[j][i] == player)
+            if (tabuleiro[j][i] == player) {
                 count++;
+            }
             if (count == 3) {
                 console.log("Victory! 2");
                 return 2;
@@ -46,8 +52,8 @@ var checkVitory = function (player) {
 };
 var changeStyle = function (line, column, id) {
     var _a, _b;
-    var xColor = '#DF0E0E';
-    var oColor = '#00bd4f';
+    var xColor = '#292C31';
+    var oColor = '#ff4655';
     var pos = "pos" + id;
     if (tabuleiro[line][column] == 0) {
         if (turn == 0) {
@@ -55,23 +61,39 @@ var changeStyle = function (line, column, id) {
             counter[0] += 1;
             checkVitory(playerX);
             console.log(tabuleiro);
-            (_a = document.getElementById(pos)) === null || _a === void 0 ? void 0 : _a.setAttribute("style", "background-image: url(\"../src/images/xicon.png\"); \n            background-color: " + xColor);
-            turn = 1;
-            var body = document.getElementById('body');
+            (_a = document.getElementById(pos)) === null || _a === void 0 ? void 0 : _a.setAttribute("style", "background-image: url(\"../src/images/xicon-red.png\"); \n            background-color: " + xColor);
             body === null || body === void 0 ? void 0 : body.setAttribute("style", '--selected-area-img: url("../src/images/circleicon.png")');
+            round === null || round === void 0 ? void 0 : round.setAttribute("style", 'background-image: url("../src/images/circleicon.png"); background-color: #ff4655');
+            turn = 1;
         }
         else {
             tabuleiro[line][column] = 1; //Marca a posição com um O
             counter[1] += 1;
             checkVitory(playerO);
             console.log(tabuleiro);
-            (_b = document.getElementById(pos)) === null || _b === void 0 ? void 0 : _b.setAttribute("style", "background-image: url(\"../src/images/circleicon.png\"); \n            background-color: " + oColor);
-            turn = 0;
-            var body = document.getElementById('body');
+            (_b = document.getElementById(pos)) === null || _b === void 0 ? void 0 : _b.setAttribute("style", "background-image: url(\"../src/images/circleicon-dark.png\"); \n            background-color: " + oColor);
             body === null || body === void 0 ? void 0 : body.setAttribute("style", '--selected-area-img: url("../src/images/xicon.png")');
+            round === null || round === void 0 ? void 0 : round.setAttribute("style", 'background-image: url("../src/images/xicon.png"); background-color: #292C31');
+            turn = 0;
         }
     }
 };
+var getNumRandom = function () {
+    var numRandom = Math.random() * (9 - 0) + 0;
+    return (Math.floor(numRandom));
+};
+var randomPlay = function () {
+    var vetRandomNumbers = new Array(9);
+    var contains;
+    do {
+        var numRandom = getNumRandom();
+        for (var i = 0; i < 9; i++) {
+            if (numRandom == vetRandomNumbers[i])
+                contains = true;
+        }
+    } while (contains);
+};
+//Verifica as posições
 var pos1 = document.getElementById('pos1');
 pos1 === null || pos1 === void 0 ? void 0 : pos1.addEventListener('click', function () { return changeStyle(0, 0, 1); });
 var pos2 = document.getElementById('pos2');
