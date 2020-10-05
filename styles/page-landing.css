@@ -1,4 +1,4 @@
-@font-face{
+@font-face {
     font-family: Valorant;
     src: url('../src//fonts/Valorant\ Font.ttf') format('truetype');
     font-weight: normal;
@@ -10,11 +10,11 @@
     padding: 0;
     box-sizing: border-box;
     border: 0;
-    --primary-color:#292C31;
+    --primary-color: #292C31;
     --default-background-color: #ffffff;
     --selected-area-color: rgb(94, 37, 160);
-    --background-color-button:  #ece8e1;
-    --background-color-button-hover:#ff4655;
+    --background-color-button: #ece8e1;
+    --background-color-button-hover: #ff4655;
 }
 
 body {
@@ -39,8 +39,8 @@ body {
     --game-area-heigth: 132px:
 }
 
-
 /* Buttons animation */
+
 div a {
     font-weight: 300;
     color: #ff4655;
@@ -147,7 +147,7 @@ body #container #options {
     justify-content: space-between;
     align-items: center;
     flex-direction: column;
-    background-color:#1F2326;
+    background-color: #1F2326;
     padding: 3px;
 }
 
@@ -157,7 +157,6 @@ body #container #options #jogo-da-velha a p {
     height: 124px;
     align-items: center;
     justify-content: center;
-
 }
 
 body #container #options #game-mode {
@@ -167,28 +166,27 @@ body #container #options #game-mode {
 }
 
 body #container #options #round {
-    
     width: 240px;
     height: 206px;
     background-color: var(--primary-color);
 }
 
-body #container #options #round-now{
+body #container #options #round-now {
     display: flex;
     width: 240px;
     height: 142px;
-    background-color:#1F2326;
+    background-color: #1F2326;
     background-position: center;
     background-size: contain;
     background-repeat: no-repeat;
     transition: 0.5s;
 }
 
-body #container #game #interaction{
+body #container #game #interaction {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    flex-direction: row ;
+    flex-direction: row;
     flex-wrap: wrap;
     width: 512px;
     height: 540px;
@@ -197,7 +195,8 @@ body #container #game #interaction{
     padding: 30px;
 }
 
-body #container #game .area{
+body #container #game .area {
+    transition: 0.8s;
     width: 132px;
     height: 132px;
     background-color: var(--primary-color);
@@ -208,11 +207,10 @@ body #container #game .area{
     flex-direction: column;
     background-position: center;
     background-size: cover;
-    transition: 0.8s;
 }
 
-body #container #game .area:hover{
+body #container #game .area:hover {
     transition: 00.5s;
-    background-color:#FF4656;
+    background-color: #FF4656;
     background-image: var(--selected-area-img);
 }

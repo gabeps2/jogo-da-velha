@@ -184,7 +184,7 @@ var randomPlay = function () {
         var numRandom = getNumRandom();
         if (vetRandomNumber[numRandom] == 0)
             contains = false;
-    } while (contains);
+    } while (contains && gameStatus != 3);
     numFreePositions--;
     var positions = new Array(10);
     positions[1] = { line: 0, column: 0 };

@@ -228,7 +228,7 @@ const randomPlay = () => {
         var numRandom = getNumRandom();
         if (vetRandomNumber[numRandom] == 0)
             contains = false;
-    } while (contains)
+    } while (contains && gameStatus!=3)
 
     numFreePositions--;
 

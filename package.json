@@ -9,6 +9,20 @@
   "dependencies": {
     "@babel/plugin-transform-modules-commonjs": "^7.10.4",
     "commonjs": "^0.0.1",
-    "es6-promise": "^4.2.8"
-  }
+    "es6-promise": "^4.2.8",
+    "gh-pages": "^3.1.0"
+  },
+  "description": "jogo da velha",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/gabeps2/jogo-da-velha.git"
+  },
+  "author": "",
+  "bugs": {
+    "url": "https://github.com/gabeps2/jogo-da-velha/issues"
+  },
+  "homepage": "https://github.com/gabeps2/jogo-da-velha#readme"
 }
