@@ -71,7 +71,7 @@ var checkVitory = function (player) {
                 count++;
             if (count == 3) {
                 gameStatus = 2;
-                return 2;
+                return 2; //Retorna o status victory
             }
         }
         count = 0;
@@ -80,7 +80,7 @@ var checkVitory = function (player) {
                 count++;
             if (count == 3) {
                 gameStatus = 2;
-                return 2;
+                return 2; //Retorna o status victory
             }
         }
     }
@@ -91,7 +91,7 @@ var checkVitory = function (player) {
             count++;
         if (count == 3) {
             gameStatus = 2;
-            return 2;
+            return 2; //Retorna o status victory
         }
     }
     count = 0;
@@ -101,30 +101,31 @@ var checkVitory = function (player) {
             count++;
         if (count == 3) {
             gameStatus = 2;
-            return 2;
+            return 2; //Retorna o status victory
         }
     }
     //Verifica se houve empate
     if (counter[0] + counter[1] == 9) {
         gameStatus = 3;
-        return 3;
+        return 3; //Retorna o status tie
     }
     //Retorna o status: jogo em andamento
     gameStatus = 1;
     return 1;
 };
-//Muda as propriedades style dos componentes
+//Faz uma jogada e muda as propriedades style dos componentes
 var changeStyle = function (line, column, id) {
     var _a, _b;
     var xColor = '#292C31';
     var oColor = '#ff4655';
-    if (gameStatus != 2 && gameStatus != 3) {
-        var pos = "pos" + id;
-        if (tabuleiro[line][column] == 0) {
+    if (gameStatus != 2 && gameStatus != 3) { //Se o jogo não estiver em empate ou vitória
+        var pos = "pos" + id; //Identifica o ID do elemento para modificações no DOM
+        if (tabuleiro[line][column] == 0) { //Verifica se a posição selecionada está vazia
             if (turn == 0) {
                 tabuleiro[line][column] = 2; //Marca a posição com um X
-                counter[playerX] += 1;
+                counter[playerX] += 1; //Adiciona +1 ao contador de jogadas
                 (_a = document.getElementById(pos)) === null || _a === void 0 ? void 0 : _a.setAttribute("style", "background-image: url(\"../src/images/xicon-red.png\"); \n                background-color: " + xColor);
+                //Define essa posição no vetor de posções como ocupada
                 vetRandomNumber[id] = 1;
                 if (checkVitory(2) == victory) {
                     round === null || round === void 0 ? void 0 : round.setAttribute("style", 'background-color: #42f563; background-image: url("../src/images/victory-x-icon.png")');
@@ -136,9 +137,12 @@ var changeStyle = function (line, column, id) {
                     roundText === null || roundText === void 0 ? void 0 : roundText.setAttribute("data-content", "Empate!");
                     return true;
                 }
+                //Altera o DOM para a jogada do adversário
                 body === null || body === void 0 ? void 0 : body.setAttribute("style", '--selected-area-img: url("../src/images/circleicon.png")');
                 round === null || round === void 0 ? void 0 : round.setAttribute("style", 'background-image: url("../src/images/circleicon.png"); background-color: #ff4655');
+                //Alterna o turno 
                 turn = 1;
+                //Se o modo de jogo for PvM ou MvM faz uma jogada aleatória com um delay de 3s
                 if (gamemode == 1 || gamemode == 2) {
                     setTimeout(function () {
                         randomPlay();
@@ -149,6 +153,7 @@ var changeStyle = function (line, column, id) {
                 tabuleiro[line][column] = 1; //Marca a posição com um O
                 counter[playerO] += 1;
                 (_b = document.getElementById(pos)) === null || _b === void 0 ? void 0 : _b.setAttribute("style", "background-image: url(\"../src/images/circleicon-dark.png\"); \n                background-color: " + oColor);
+                //Define essa posição no vetor de posções como ocupada
                 vetRandomNumber[id] = 1;
                 if (checkVitory(1) == victory) {
                     round === null || round === void 0 ? void 0 : round.setAttribute("style", 'background-color: #42f563; background-image: url("../src/images/victory-circle-icon.png")');
@@ -160,9 +165,12 @@ var changeStyle = function (line, column, id) {
                     roundText === null || roundText === void 0 ? void 0 : roundText.setAttribute("data-content", "Empate!");
                     return true;
                 }
+                //Altera o DOM para a jogada do adversário
                 body === null || body === void 0 ? void 0 : body.setAttribute("style", '--selected-area-img: url("../src/images/xicon.png")');
                 round === null || round === void 0 ? void 0 : round.setAttribute("style", 'background-image: url("../src/images/xicon.png"); background-color: #292C31');
+                //Alterna o turno 
                 turn = 0;
+                //Se o modo de jogo for MvM faz uma jogada aleatória com um delay de 3s
                 if (gamemode == 2) {
                     setTimeout(function () {
                         randomPlay();
@@ -180,11 +188,13 @@ var getNumRandom = function () {
 //Faz uma jogada aleatória
 var randomPlay = function () {
     var contains = true;
+    //Se o número da posição sorteada ja estiver ocupado, sorteia outro
     do {
         var numRandom = getNumRandom();
         if (vetRandomNumber[numRandom] == 0)
             contains = false;
     } while (contains && gameStatus != 3);
+    //Diminui o número de posições livres
     numFreePositions--;
     var positions = new Array(10);
     positions[1] = { line: 0, column: 0 };
@@ -196,11 +206,8 @@ var randomPlay = function () {
     positions[7] = { line: 2, column: 0 };
     positions[8] = { line: 2, column: 1 };
     positions[9] = { line: 2, column: 2 };
-    var numRep = 1;
-    if (numRep = 1) {
-        changeStyle(positions[numRandom].line, positions[numRandom].column, numRandom);
-        numRep = 0;
-    }
+    //Chama a função que faz a jogada e altera o style
+    changeStyle(positions[numRandom].line, positions[numRandom].column, numRandom);
 };
 //Verifica os eventos no tabuleiro
 var pos1 = document.getElementById('pos1');
