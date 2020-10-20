@@ -1,6 +1,6 @@
 @font-face {
     font-family: Valorant;
-    src: url('../src//fonts/Valorant\ Font.ttf') format('truetype');
+    assets: url('../fonts/Valorant\ Font.ttf') format('truetype');
     font-weight: normal;
     font-style: normal;
 }
@@ -26,11 +26,11 @@ body {
     align-items: center;
     justify-content: center;
     padding-top: 10%;
-    background-image: url("../src/images/Backgrounds/7.png");
+    background-image: url("../images/Backgrounds/7.png");
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
-    --selected-area-img: url("../src/images/xicon.png");
+    --selected-area-img: url("../images/xicon.png");
     --width-container: 768px;
     --height-container: 540px;
     --options-buttons-width: 240px;

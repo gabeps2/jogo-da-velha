@@ -73,7 +73,7 @@ var tie = 3
 var gameStatus = 0;
 
 //Verifica o status do jogos
-const checkVitory = (player: number): number => {
+const checkvictory = (player: number): number => {
 
     //Returns: 0 = insufficient plays
     //         1 = game in progess
@@ -148,27 +148,27 @@ const changeStyle = (line: number, column: number, id: number) => {
                 counter[playerX] += 1; //Adiciona +1 ao contador de jogadas
 
                 document.getElementById(pos)?.setAttribute("style",
-                    `background-image: url("../src/images/xicon-red.png"); 
+                    `background-image: url("./assets/images/xicon-red.png"); 
                 background-color: ${xColor}`);
 
                 //Define essa posição no vetor de posções como ocupada
                 vetRandomNumber[id] = 1;
 
-                if (checkVitory(2) == victory) {
-                    round?.setAttribute("style", 'background-color: #42f563; background-image: url("../src/images/victory-x-icon.png")')
+                if (checkvictory(2) == victory) {
+                    round?.setAttribute("style", 'background-color: #42f563; background-image: url("./assets/images/victory-x-icon.png")')
                     roundText?.setAttribute("data-content", "Victory!");
                     return true;
                 }
-                else if (checkVitory(2) == tie) {
-                    round?.setAttribute("style", 'background-color: #ffea00; background-image: url("../src/images/tie-icon.png")')
+                else if (checkvictory(2) == tie) {
+                    round?.setAttribute("style", 'background-color: #ffea00; background-image: url("./assets/images/tie-icon.png")')
                     roundText?.setAttribute("data-content", "Empate!");
                     return true;
                 }
 
                 //Altera o DOM para a jogada do adversário
-                body?.setAttribute("style", '--selected-area-img: url("../src/images/circleicon.png")')
+                body?.setAttribute("style", '--selected-area-img: url("../images/circleicon.png")')
 
-                round?.setAttribute("style", 'background-image: url("../src/images/circleicon.png"); background-color: #ff4655');
+                round?.setAttribute("style", 'background-image: url("./assets/images/circleicon.png"); background-color: #ff4655');
 
                 //Alterna o turno 
                 turn = 1;
@@ -186,27 +186,27 @@ const changeStyle = (line: number, column: number, id: number) => {
                 counter[playerO] += 1;
 
                 document.getElementById(pos)?.setAttribute("style",
-                    `background-image: url("../src/images/circleicon-dark.png"); 
+                    `background-image: url("./assets/images/circleicon-dark.png"); 
                 background-color: ${oColor}`);
 
                 //Define essa posição no vetor de posções como ocupada
                 vetRandomNumber[id] = 1;
 
-                if (checkVitory(1) == victory) {
-                    round?.setAttribute("style", 'background-color: #42f563; background-image: url("../src/images/victory-circle-icon.png")')
+                if (checkvictory(1) == victory) {
+                    round?.setAttribute("style", 'background-color: #42f563; background-image: url("./assets/images/victory-circle-icon.png")')
                     roundText?.setAttribute("data-content", "Victory!");
                     return true;
                 }
-                else if (checkVitory(1) == tie) {
-                    round?.setAttribute("style", 'background-color: #ffea00; background-image: url("../src/images/r2d2.png")')
+                else if (checkvictory(1) == tie) {
+                    round?.setAttribute("style", 'background-color: #ffea00; background-image: url("./assets/images/r2d2.png")')
                     roundText?.setAttribute("data-content", "Empate!");
                     return true;
                 }
 
                 //Altera o DOM para a jogada do adversário
-                body?.setAttribute("style", '--selected-area-img: url("../src/images/xicon.png")')
+                body?.setAttribute("style", '--selected-area-img: url("../images/xicon.png")')
 
-                round?.setAttribute("style", 'background-image: url("../src/images/xicon.png"); background-color: #292C31');
+                round?.setAttribute("style", 'background-image: url("./assets/images/xicon.png"); background-color: #292C31');
 
                 //Alterna o turno 
                 turn = 0;

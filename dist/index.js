@@ -57,7 +57,7 @@ var victory = 2;
 var tie = 3;
 var gameStatus = 0;
 //Verifica o status do jogos
-var checkVitory = function (player) {
+var checkvictory = function (player) {
     //Returns: 0 = insufficient plays
     //         1 = game in progess
     //         2 = victory
@@ -124,22 +124,22 @@ var changeStyle = function (line, column, id) {
             if (turn == 0) {
                 tabuleiro[line][column] = 2; //Marca a posição com um X
                 counter[playerX] += 1; //Adiciona +1 ao contador de jogadas
-                (_a = document.getElementById(pos)) === null || _a === void 0 ? void 0 : _a.setAttribute("style", "background-image: url(\"../src/images/xicon-red.png\"); \n                background-color: " + xColor);
+                (_a = document.getElementById(pos)) === null || _a === void 0 ? void 0 : _a.setAttribute("style", "background-image: url(\"./assets/images/xicon-red.png\"); \n                background-color: " + xColor);
                 //Define essa posição no vetor de posções como ocupada
                 vetRandomNumber[id] = 1;
-                if (checkVitory(2) == victory) {
-                    round === null || round === void 0 ? void 0 : round.setAttribute("style", 'background-color: #42f563; background-image: url("../src/images/victory-x-icon.png")');
+                if (checkvictory(2) == victory) {
+                    round === null || round === void 0 ? void 0 : round.setAttribute("style", 'background-color: #42f563; background-image: url("./assets/images/victory-x-icon.png")');
                     roundText === null || roundText === void 0 ? void 0 : roundText.setAttribute("data-content", "Victory!");
                     return true;
                 }
-                else if (checkVitory(2) == tie) {
-                    round === null || round === void 0 ? void 0 : round.setAttribute("style", 'background-color: #ffea00; background-image: url("../src/images/tie-icon.png")');
+                else if (checkvictory(2) == tie) {
+                    round === null || round === void 0 ? void 0 : round.setAttribute("style", 'background-color: #ffea00; background-image: url("./assets/images/tie-icon.png")');
                     roundText === null || roundText === void 0 ? void 0 : roundText.setAttribute("data-content", "Empate!");
                     return true;
                 }
                 //Altera o DOM para a jogada do adversário
-                body === null || body === void 0 ? void 0 : body.setAttribute("style", '--selected-area-img: url("../src/images/circleicon.png")');
-                round === null || round === void 0 ? void 0 : round.setAttribute("style", 'background-image: url("../src/images/circleicon.png"); background-color: #ff4655');
+                body === null || body === void 0 ? void 0 : body.setAttribute("style", '--selected-area-img: url("../images/circleicon.png")');
+                round === null || round === void 0 ? void 0 : round.setAttribute("style", 'background-image: url("./assets/images/circleicon.png"); background-color: #ff4655');
                 //Alterna o turno 
                 turn = 1;
                 //Se o modo de jogo for PvM ou MvM faz uma jogada aleatória com um delay de 3s
@@ -152,22 +152,22 @@ var changeStyle = function (line, column, id) {
             else {
                 tabuleiro[line][column] = 1; //Marca a posição com um O
                 counter[playerO] += 1;
-                (_b = document.getElementById(pos)) === null || _b === void 0 ? void 0 : _b.setAttribute("style", "background-image: url(\"../src/images/circleicon-dark.png\"); \n                background-color: " + oColor);
+                (_b = document.getElementById(pos)) === null || _b === void 0 ? void 0 : _b.setAttribute("style", "background-image: url(\"./assets/images/circleicon-dark.png\"); \n                background-color: " + oColor);
                 //Define essa posição no vetor de posções como ocupada
                 vetRandomNumber[id] = 1;
-                if (checkVitory(1) == victory) {
-                    round === null || round === void 0 ? void 0 : round.setAttribute("style", 'background-color: #42f563; background-image: url("../src/images/victory-circle-icon.png")');
+                if (checkvictory(1) == victory) {
+                    round === null || round === void 0 ? void 0 : round.setAttribute("style", 'background-color: #42f563; background-image: url("./assets/images/victory-circle-icon.png")');
                     roundText === null || roundText === void 0 ? void 0 : roundText.setAttribute("data-content", "Victory!");
                     return true;
                 }
-                else if (checkVitory(1) == tie) {
-                    round === null || round === void 0 ? void 0 : round.setAttribute("style", 'background-color: #ffea00; background-image: url("../src/images/r2d2.png")');
+                else if (checkvictory(1) == tie) {
+                    round === null || round === void 0 ? void 0 : round.setAttribute("style", 'background-color: #ffea00; background-image: url("./assets/images/r2d2.png")');
                     roundText === null || roundText === void 0 ? void 0 : roundText.setAttribute("data-content", "Empate!");
                     return true;
                 }
                 //Altera o DOM para a jogada do adversário
-                body === null || body === void 0 ? void 0 : body.setAttribute("style", '--selected-area-img: url("../src/images/xicon.png")');
-                round === null || round === void 0 ? void 0 : round.setAttribute("style", 'background-image: url("../src/images/xicon.png"); background-color: #292C31');
+                body === null || body === void 0 ? void 0 : body.setAttribute("style", '--selected-area-img: url("../images/xicon.png")');
+                round === null || round === void 0 ? void 0 : round.setAttribute("style", 'background-image: url("./assets/images/xicon.png"); background-color: #292C31');
                 //Alterna o turno 
                 turn = 0;
                 //Se o modo de jogo for MvM faz uma jogada aleatória com um delay de 3s
