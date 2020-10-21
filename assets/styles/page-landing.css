@@ -131,8 +131,10 @@ div a:hover span.bg {
 /* Containers */
 
 body #container {
-    width: var(--width-container);
-    height: var(--height-container);
+    width: 100vw;
+    height: 100vh;
+    max-width: var(--width-container);
+    max-height: var(--height-container);
     background-color: white;
     display: flex;
     align-items: center;
@@ -213,4 +215,10 @@ body #container #game .area:hover {
     transition: 00.5s;
     background-color: #FF4656;
     background-image: var(--selected-area-img);
+}
+
+@media only screen and (max-width: 700px){
+    body {
+        transform: scale(0.60);
+   }
 }
