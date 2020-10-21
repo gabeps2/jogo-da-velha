@@ -1,5 +1,5 @@
 @font-face {
-    font-family: 'Valorant', 'Archivo', sans-serif;
+    font-family: Valorant;
     src: url('../fonts/ValorantFont.ttf') format('truetype');
     font-weight: normal;
     font-style: normal;
@@ -15,7 +15,7 @@
 
 body {
     background-color: rgb(0, 0, 0);
-    font-family: 'Valorant';
+    font-family: Valorant, Archivo, sans-serif;
     text-rendering: optimizeLegibility !important;
     -webkit-font-smoothing: antialiased !important;
     display: flex;
@@ -26,7 +26,6 @@ body {
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
-    
     --selected-area-img: url("../images/xicon.png");
     --width-container: 768px;
     --height-container: 540px;
@@ -37,6 +36,7 @@ body {
 }
 
 /* Buttons animation */
+
 div a {
     font-weight: 300;
     color: #ff4655;
@@ -125,6 +125,7 @@ div a:hover span.bg {
 }
 
 /* Containers */
+
 body #container {
     width: 100vw;
     height: 100vh;
@@ -212,8 +213,8 @@ body #container #game .area:hover {
     background-image: var(--selected-area-img);
 }
 
-@media only screen and (max-width: 700px){
+@media only screen and (max-width: 700px) {
     body {
         transform: scale(0.60);
-   }
+    }
 }
