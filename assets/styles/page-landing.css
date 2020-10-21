@@ -11,10 +11,6 @@
     box-sizing: border-box;
     border: 0;
     --primary-color: #292C31;
-    --default-background-color: #ffffff;
-    --selected-area-color: rgb(94, 37, 160);
-    --background-color-button: #ece8e1;
-    --background-color-button-hover: #ff4655;
 }
 
 body {
@@ -30,6 +26,7 @@ body {
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
+    
     --selected-area-img: url("../images/xicon.png");
     --width-container: 768px;
     --height-container: 540px;
@@ -40,7 +37,6 @@ body {
 }
 
 /* Buttons animation */
-
 div a {
     font-weight: 300;
     color: #ff4655;
@@ -129,7 +125,6 @@ div a:hover span.bg {
 }
 
 /* Containers */
-
 body #container {
     width: 100vw;
     height: 100vh;
@@ -212,7 +207,7 @@ body #container #game .area {
 }
 
 body #container #game .area:hover {
-    transition: 00.5s;
+    transition: 0.5s;
     background-color: #FF4656;
     background-image: var(--selected-area-img);
 }
